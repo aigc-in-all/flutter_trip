@@ -162,7 +162,7 @@ class _SearchBarState extends State<SearchBar> {
                   : _wrapTap(
                       Container(
                         child: Text(
-                          widget.defaultText,
+                          widget.defaultText ?? '',
                           style: TextStyle(fontSize: 13, color: Colors.grey),
                         ),
                       ),
