@@ -9,7 +9,6 @@ class SubNav extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('subNavList: ${subNavList.length}');
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
