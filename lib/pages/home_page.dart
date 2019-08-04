@@ -90,83 +90,88 @@ class _HomePageState extends State<HomePage> {
                     }
                     return false;
                   },
-                  child: RefreshIndicator(
-                      child: ListView(
-                        children: <Widget>[
-                          Container(
-                            height: 160,
-                            child: Swiper(
-                              itemCount: bannerList.length,
-                              autoplay: true,
-                              itemBuilder: (context, index) {
-                                return GestureDetector(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) {
-                                          CommonModel model = bannerList[index];
-                                          return WebView(
-                                            url: model.url,
-                                            statusBarColor:
-                                            model.statusBarColor,
-                                            hideAppBar: model.hideAppBar,
-                                          );
-                                        },
-                                      ),
-                                    );
-                                  },
-                                  child: Image.network(
-                                    bannerList[index].icon,
-                                    fit: BoxFit.fill,
-                                  ),
-                                );
-                              },
-                              pagination: SwiperPagination(),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(7, 4, 7, 4),
-                            child: LocalNav(localNavList: localNavList),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(7, 0, 7, 4),
-                            child: GridNav(gridNavModel: gridNavModel),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(7, 0, 7, 4),
-                            child: SubNav(subNavList: subNavList),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(7, 0, 7, 4),
-                            child: SalesBox(salesBox: salesBoxModel),
-                          ),
-                          Container(
-                            height: 800,
-                            child: ListTile(
-                              title: Text("haha"),
-                            ),
-                          )
-                        ],
-                      ),
-                      onRefresh: _handleRefresh),
+                  child: _listView,
                 ),
               ),
-              Opacity(
-                opacity: _appBarAlpha,
-                child: Container(
-                  height: 80,
-                  decoration: BoxDecoration(color: Colors.white),
-                  child: Center(
-                    child: Padding(
-                      padding: EdgeInsets.only(top: 20),
-                      child: Text('首页'),
-                    ),
-                  ),
-                ),
-              )
+              _appBar,
             ],
           )),
+    );
+  }
+
+  Widget get _appBar {
+    return Opacity(
+      opacity: _appBarAlpha,
+      child: Container(
+        height: 80,
+        decoration: BoxDecoration(color: Colors.white),
+        child: Center(
+          child: Padding(
+            padding: EdgeInsets.only(top: 20),
+            child: Text('首页'),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget get _listView {
+    return RefreshIndicator(
+        onRefresh: _handleRefresh,
+        child: ListView(
+          children: <Widget>[
+            _banner,
+            Padding(
+              padding: EdgeInsets.fromLTRB(7, 4, 7, 4),
+              child: LocalNav(localNavList: localNavList),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(7, 0, 7, 4),
+              child: GridNav(gridNavModel: gridNavModel),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(7, 0, 7, 4),
+              child: SubNav(subNavList: subNavList),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(7, 0, 7, 4),
+              child: SalesBox(salesBox: salesBoxModel),
+            )
+          ],
+        ));
+  }
+
+  Widget get _banner {
+    return Container(
+      height: 160,
+      child: Swiper(
+        itemCount: bannerList.length,
+        autoplay: true,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    CommonModel model = bannerList[index];
+                    return WebView(
+                      url: model.url,
+                      statusBarColor: model.statusBarColor,
+                      hideAppBar: model.hideAppBar,
+                    );
+                  },
+                ),
+              );
+            },
+            child: Image.network(
+              bannerList[index].icon,
+              fit: BoxFit.fill,
+            ),
+          );
+        },
+        pagination: SwiperPagination(),
+      ),
     );
   }
 }
