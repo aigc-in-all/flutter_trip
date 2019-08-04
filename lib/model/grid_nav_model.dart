@@ -12,7 +12,7 @@ class GridNavModel {
     return json != null
         ? GridNavModel(
             hotel: GridNavItem.fromjson(json['hotel']),
-            flight: GridNavItem.fromjson(json['hotel']),
+        flight: GridNavItem.fromjson(json['flight']),
             travel: GridNavItem.fromjson(json['travel']))
         : null;
   }
