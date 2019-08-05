@@ -30,6 +30,7 @@ class _TabNavigatorState extends State<TabNavigator> {
           TravelPage(),
           MyPage(),
         ],
+        physics: NeverScrollableScrollPhysics(), // 滚动滑动Tab
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
