@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_trip/dao/search_dao.dart';
 import 'package:flutter_trip/model/search_model.dart';
 import 'package:flutter_trip/pages/speak_page.dart';
+import 'package:flutter_trip/util/navigator_util.dart';
 import 'package:flutter_trip/widgets/search_bar.dart';
 import 'package:flutter_trip/widgets/webview.dart';
 
@@ -25,7 +26,6 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   SearchModel searchModel;
   String keyword;
-
 
   @override
   void initState() {
@@ -100,7 +100,7 @@ class _SearchPageState extends State<SearchPage> {
               defaultText: widget.keyword,
               hint: widget.hint,
               leftButtonClick: () {
-                Navigator.pop(context);
+                NavigatorUtil.pop(context);
               },
               speakClick: _jumpToSpeak,
               onChanged: _onTextChanged,
@@ -112,12 +112,7 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   _jumpToSpeak() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => SpeakPage(),
-      ),
-    );
+    NavigatorUtil.push(context, SpeakPage());
   }
 
   _item(int index) {
@@ -127,16 +122,7 @@ class _SearchPageState extends State<SearchPage> {
     SearchItem item = searchModel.data[index];
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) =>
-                WebView(
-                  url: item.url,
-                  title: '详情',
-                ),
-          ),
-        );
+        NavigatorUtil.push(context, WebView(url: item.url, title: '详情'));
       },
       child: Container(
         padding: EdgeInsets.all(10),

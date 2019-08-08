@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_trip/pages/search_page.dart';
 import 'package:flutter_trip/plugin/asr_manager.dart';
+import 'package:flutter_trip/util/navigator_util.dart';
 
 // 语音识别
 class SpeakPage extends StatefulWidget {
@@ -64,12 +65,8 @@ class _SpeakPageState extends State<SpeakPage>
         setState(() {
           speakResult = text;
         });
-        Navigator.pop(context);
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => SearchPage(keyword: speakResult)),
-        );
+        NavigatorUtil.pop(context);
+        NavigatorUtil.push(context, SearchPage(keyword: speakResult));
         print("------" + text);
       }
     }).catchError((e) {
@@ -163,7 +160,7 @@ class _SpeakPageState extends State<SpeakPage>
             bottom: 20,
             child: GestureDetector(
               onTap: () {
-                Navigator.pop(context);
+                NavigatorUtil.pop(context);
               },
               child: Icon(
                 Icons.close,
