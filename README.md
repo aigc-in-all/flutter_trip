@@ -1,16 +1,12 @@
 # flutter_trip
 
-A new Flutter application.
+A learning project for Flutter
 
-## Getting Started
+## Screenshot
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="/screenshot/home.png" height="300em" />
+<img src="/screenshot/home1.png" height="300em" />
+<img src="/screenshot/hotel.png" height="300em" />
+<img src="/screenshot/trip.png" height="300em" />
+<img src="/screenshot/me.png" height="300em" />
+<img src="/screenshot/voice.png" height="300em" />
